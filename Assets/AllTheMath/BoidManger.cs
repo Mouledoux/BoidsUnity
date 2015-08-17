@@ -39,24 +39,17 @@ public class BoidManger : MonoBehaviour
 
     void drawBoid()
     {
-        for(int i = 0; i < numOfBoid; i++) 
+        for (int i = 0; i < numOfBoid; i++)
         {
-            if(Random.Range(0,20) == 12)
-            {
-                GameObject prod = Instantiate(pred) as GameObject; //creates the boids to the screen as gameobjects to be added to the lsit
-                prod.transform.parent = gameObject.transform; // sets the new gameobject to the position of the parent object
-                BOIDS.Add(prod);
-            }
-            else
-            {
-                GameObject bwird = Instantiate(boid) as GameObject; //creates the boids to the screen as gameobjects to be added to the lsit
-                bwird.transform.parent = gameObject.transform; // sets the new gameobject to the position of the parent object
-                BOIDS.Add(bwird);
-            }
+
+            GameObject bwird = Instantiate(boid) as GameObject; //creates the boids to the screen as gameobjects to be added to the lsit
+            bwird.transform.parent = gameObject.transform; // sets the new gameobject to the position of the parent object
+            BOIDS.Add(bwird);
 
 
-            foreach(GameObject b in BOIDS)
-            { 
+
+            foreach (GameObject b in BOIDS)
+            {
                 b.GetComponent<Bird>().pos = new Vector3(Random.Range(10, 20),
                                              Random.Range(10, 20),
                                              Random.Range(10, 20));
@@ -73,7 +66,7 @@ public class BoidManger : MonoBehaviour
             */
         }
 
-        
+
     }
 
     void moveBoid()
@@ -231,33 +224,19 @@ public class BoidManger : MonoBehaviour
         return v;
     }
 
-    void whatToDo()
+    //functions for sliders to change the values of each modifer
+    public void setC_Mod(float a)
     {
-        foreach(GameObject b in BOIDS)
-        {
-            if(b.GetComponent<Bird>().isPredator == true)
-            {
-
-            }
-        }
-    }
-    
-    void search(GameObject boidJ)
-    {
-        foreach(GameObject b in BOIDS)
-        {
-            if (b.GetComponent<Bird>().isPredator == false && calcDis(b.GetComponent<Bird>().pos, boidJ.GetComponent<Bird>().pos) < 10)
-            {
-                target = b;
-            } 
-        }
+        cMod = a;
     }
 
-    Vector3 chase(GameObject boidJ)
+    public void setS_Mod(float a)
     {
-        Vector3 catchUp = Vector3.zero;
+        sMod = a;
+    }
 
-        return catchUp;
-
+    public void setA_Mod(float a)
+    {
+        aMod = a;
     }
 }
