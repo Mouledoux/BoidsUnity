@@ -113,7 +113,7 @@ public class BoidManger : MonoBehaviour
         return boid.GetComponent<Bird>().dis;
     }
 
-    Vector3 rule1(GameObject boidJ) //cohession (this works)
+    Vector3 rule1(GameObject boidJ) //cohession 
     {
         Vector3 pc = Vector3.zero; //zeros out the varibale for the percived center
 
@@ -165,7 +165,7 @@ public class BoidManger : MonoBehaviour
         return c;
     }
 
-    Vector3 rule3(GameObject boidJ) //allignment (
+    Vector3 rule3(GameObject boidJ) //allignment 
     {
         Vector3 pvJ = Vector3.zero; //percived velocity
         foreach (GameObject b in BOIDS)
